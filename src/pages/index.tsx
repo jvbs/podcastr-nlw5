@@ -1,7 +1,8 @@
 import { GetStaticProps } from "next"
+import { api } from "../services/api"
 
 //? interface works the same aswell
-
+// First way to type the props
 type Episode = {
   id: string;
   title: string;
@@ -12,6 +13,7 @@ type HomeProps = {
   episodes: Episode[];
 }
 
+// Second way to type the props
 /*
 type HomeProps = {
   episodes: Array<{
@@ -27,7 +29,7 @@ export default function Home(props : HomeProps) {
 }
 
 export const getStaticProps : GetStaticProps = async () => {
-  const response = await fetch('http://localhost:3333/episodes')
+  const response = await api.get('/episodes?_limit=12&_sort=published_at&_order=desc')
   const data = await response.json()
 
   return {
