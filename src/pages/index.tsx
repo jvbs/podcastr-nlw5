@@ -15,7 +15,7 @@ type Episode = {
   id: string;
   title: string;
   members: string;
-  description: string;
+  // description: string;
   duration: number;
   durationAsString: string;
   url: string;
@@ -58,7 +58,7 @@ export default function Home({ latestEpisodes, allEpisodes } : HomeProps) {
                 />
 
                 <div className={styles.episodeDetails}>
-                  <a href="">{episode.title}</a>
+                  <Link href={`/episodes/${episode.id}`}>{episode.title}</Link>
                   <p>{episode.members}</p>
                   <span>{episode.publishedAt}</span>
                   <span>{episode.durationAsString}</span>
@@ -90,7 +90,7 @@ export default function Home({ latestEpisodes, allEpisodes } : HomeProps) {
             {allEpisodes.map(episode => {
               return (
                 <tr key={episode.id}>
-                  <td>
+                  <td style={{width:72}}>
                     <Image 
                     width={120} 
                     height={120} 
